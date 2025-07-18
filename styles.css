@@ -1,0 +1,149 @@
+body {
+ font-family: sans-serif;
+ margin: 0;
+ padding: 0;
+ background-color: #f4f4f4;
+}
+
+header {
+ background-color: #001f3f;
+ color: white;
+ text-align: center;
+ margin: 0;
+}
+
+/* Mensaje de rotación (solo móvil vertical) */
+.rotate-message {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 31, 63, 0.9);
+ color: white;
+ justify-content: center;
+ align-items: center;
+ z-index: 100;
+}
+
+.message-container {
+ text-align: center;
+ padding: 20px;
+ max-width: 80%;
+}
+
+.rotate-icon {
+ font-size: 3rem;
+ margin-bottom: 20px;
+ animation: rotateAnimation 2s infinite;
+}
+
+@keyframes rotateAnimation {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(90deg); }
+}
+
+/* Grid principal (7x7) */
+.party-grid {
+ display: grid;
+ grid-template-columns: repeat(7, 1fr);
+ grid-template-rows: repeat(7, 1fr);
+ gap: 5px;
+ padding: 15px;
+ max-width: 1200px;
+ margin: 0 auto;
+ box-sizing: border-box;
+}
+
+.party-logo {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border: 1px solid #ddd;
+ border-radius: 5px;
+ background-color: white;
+ padding: 10px;
+ min-height: 45px;
+ text-align: center;
+}
+
+.party-logo.empty {
+ background-color: transparent;
+ border: 1px dashed #ccc;
+}
+
+.party-logo img {
+ max-width: 100%;
+ max-height: 80px;
+ height: auto;
+}
+
+/* Media queries para orientación */
+@media (max-width: 768px) and (orientation: portrait) {
+ .party-grid {
+  display: none !important;
+ }
+ 
+ .rotate-message {
+  display: flex;
+ }
+ 
+ header h1 {
+  font-size: 1.3rem;
+ }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .party-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .party-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .rotate-message {
+    display: none !important;
+  }
+}
+
+
+/* Versión Móvil - Tarjetas rectangulares */
+@media (max-width: 768px) {
+  .party-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: minmax(50px, auto);
+  }
+  
+.party-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80px; /* o el tamaño que prefieras */
+  min-width: 80px;
+  padding: 0;
+}
+
+.party-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene proporciones sin deformar */
+  margin: 0; /* elimina espaciado extra */
+}
+  
+  .party-logo::after {
+    content: attr(data-party);
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
