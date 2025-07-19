@@ -62,7 +62,6 @@ header {
   justify-content: center;
   align-items: center;
   border: 1px solid #ddd;
-  border-radius: 8px;
   background-color: white;
   padding: 0; /* Eliminamos el padding para ajuste perfecto */
   overflow: hidden;
@@ -92,7 +91,7 @@ header {
   width: 100%;
   height: 100%;
   object-fit: contain; /* Muestra toda la imagen sin recortar */
-  padding: 5px; /* Espacio interno opcional */
+  padding: 0; /* Espacio interno opcional */
   box-sizing: border-box;
 }
 
