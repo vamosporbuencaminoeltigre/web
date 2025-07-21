@@ -180,3 +180,23 @@ body {
         text-size-adjust: 100%;
     }
 }
+
+@media screen and (orientation: landscape) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #e0e0e0;
+  }
+  .image-container {
+    display: none !important;
+  }
+  body::before {
+    color: #333;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2em;
+    display: block;
+  }
+}
