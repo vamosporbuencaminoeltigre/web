@@ -75,6 +75,9 @@ body {
     flex-direction: row !important;
     min-width: 0;
     min-height: 0;
+    /* Prevenir scroll horizontal */
+    overflow-x: auto;
+    overflow-y: auto;
   }
   .columna-izquierda, .columna-derecha {
     min-width: 0;
@@ -96,8 +99,6 @@ body {
     background: #F2F2F2;
     /* Soporte para scroll suave en iOS */
     -webkit-overflow-scrolling: touch;
-    /* Prevenir scroll horizontal */
-    overflow-x: hidden;
 }
 
 .subtitulo {
