@@ -86,7 +86,7 @@ function showVotoExitoso() {
       z-index: 10000;
     `;
     exitoDiv.innerHTML = `
-      <img src="inicio/voto.png" alt="Voto Exitoso" id="img-voto-exito" style="max-width:100vw;max-height:100vh;width:100vw;height:100vh;object-fit:contain;cursor:pointer;">
+      <img src="inicio/voto.png" alt="Voto Exitoso" loading="eager" id="img-voto-exito" style="max-width:100vw;max-height:100vh;width:100vw;height:100vh;object-fit:contain;cursor:pointer;">
       <button id="cerrar-voto-exito" style="position:absolute;top:18px;right:18px;background:#e53935;color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:2em;line-height:1;cursor:pointer;z-index:10001;">&times;</button>
     `;
     document.body.appendChild(exitoDiv);
