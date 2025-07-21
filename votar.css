@@ -300,3 +300,23 @@ body {
         -webkit-user-select: none;
     }
 }
+
+.columna-derecha .opcion-voto {
+    min-height: 40.425px;
+    padding: 0 1.155px;
+}
+
+.columna-derecha .partido {
+    width: 80.85px;
+    height: 25.41px;
+}
+
+.columna-derecha .partido img {
+    width: 71.61px;
+    height: 23.1px;
+}
+
+.columna-derecha .candidato {
+    font-size: 10.395px;
+    margin-top: 2.31px;
+}
