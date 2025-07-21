@@ -1,0 +1,138 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 1px 0;
+  margin: 0;
+}
+
+/* Mensaje de rotación */
+.rotate-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 31, 63, 0.9);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  flex-direction: column;
+}
+
+.message-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 80%;
+}
+
+.rotate-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: rotateAnimation 2s infinite;
+}
+
+@keyframes rotateAnimation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(90deg); }
+}
+
+/* Grid principal - Versión Escritorio */
+.party-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr)); /* Columnas de tamaño uniforme */
+  grid-auto-rows: 1fr; /* Filas de altura uniforme */
+  gap: 10px;
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.party-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 0; /* Eliminamos el padding para ajuste perfecto */
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  /* Nuevo: Tamaño basado en contenido */
+  width: 100%;
+  height: 0;
+  padding-bottom: 40%; /* Mantiene relación cuadrada 1:1 */
+  position: relative;
+}
+
+.party-logo:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.party-logo.empty {
+  background-color: #f9f9f9;
+  border: 1px dashed #aaa;
+}
+
+.party-logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Muestra toda la imagen sin recortar */
+  padding: 0; /* Espacio interno opcional */
+  box-sizing: border-box;
+}
+
+/* Estilos para móvil en horizontal */
+@media (max-width: 768px) and (orientation: landscape) {
+  .party-grid {
+    padding: 10px;
+    gap: 6px;
+  }
+}
+
+/* Estilos para móvil en vertical */
+@media (max-width: 768px) and (orientation: portrait) {
+  .party-grid {
+    display: none;
+  }
+  
+  .rotate-message {
+    display: flex;
+  }
+}
+
+/* Versión móvil alternativa (grid responsive) */
+@media (max-width: 768px) {
+  .party-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    padding: 10px;
+  }
+  
+  /* Mantenemos la relación cuadrada */
+  .party-logo {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .party-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 5px;
+  }
+}
