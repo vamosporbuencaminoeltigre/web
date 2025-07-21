@@ -219,6 +219,57 @@ function setupVotarAlerta() {
   });
 }
 
+// --- INICIO FUNCIÓN DE ORIENTACIÓN CLONADA DE TARJETON ---
+function checkOrientation() {
+  const grid = document.querySelector('.contenedor-votacion');
+  const message = document.querySelector('.rotate-message');
+  if (!grid || !message) return;
+  // Detectar si es dispositivo móvil
+  const isMobile = window.innerWidth <= 768 || 
+                   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isMobile) {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+      grid.style.display = 'none';
+      message.style.display = 'flex';
+    } else {
+      grid.style.display = '';
+      message.style.display = 'none';
+    }
+  } else {
+    grid.style.display = '';
+    message.style.display = 'none';
+  }
+}
+
+function ensureViewport() {
+  if (window.innerWidth <= 768) {
+    const viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover');
+    }
+  }
+}
+
+if (window.location.pathname.endsWith('votar.html') || window.location.pathname.endsWith('votar.html/')) {
+  window.addEventListener('DOMContentLoaded', function() {
+    ensureViewport();
+    checkOrientation();
+  });
+  window.addEventListener('orientationchange', function() {
+    setTimeout(function() {
+      ensureViewport();
+      checkOrientation();
+    }, 100);
+  });
+  window.addEventListener('resize', function() {
+    setTimeout(function() {
+      ensureViewport();
+      checkOrientation();
+    }, 50);
+  });
+}
+// --- FIN FUNCIÓN DE ORIENTACIÓN CLONADA DE TARJETON ---
+
 // Inicializar cuando el DOM esté listo
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
