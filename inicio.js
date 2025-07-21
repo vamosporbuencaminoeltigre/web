@@ -1,3 +1,7 @@
+// Intentar bloquear la orientación a vertical (portrait) en navegadores compatibles
+if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock('portrait').catch(function(){});
+}
 // Configuración completa para dispositivos móviles
 document.addEventListener('DOMContentLoaded', function() {
     
