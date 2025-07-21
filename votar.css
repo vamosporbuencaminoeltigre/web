@@ -320,3 +320,71 @@ body {
     font-size: 10.395px;
     margin-top: 2.31px;
 }
+
+/* --- INICIO ESTILOS DE ROTACIÓN CLONADOS DE TARJETON --- */
+.rotate-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 31, 63, 0.95);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+}
+.message-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 85vw;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.rotate-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: rotateAnimation 2s infinite ease-in-out;
+}
+@keyframes rotateAnimation {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+.message-container p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+@media (orientation: portrait) {
+  .message-container {
+    padding: 16px;
+    max-width: 90vw;
+  }
+  .rotate-icon {
+    font-size: 3.5rem;
+  }
+  .message-container p {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 375px) {
+  .message-container {
+    padding: 12px;
+    max-width: 92vw;
+  }
+  .rotate-icon {
+    font-size: 3rem;
+  }
+  .message-container p {
+    font-size: 1rem;
+  }
+}
+/* --- FIN ESTILOS DE ROTACIÓN CLONADOS DE TARJETON --- */
