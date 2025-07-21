@@ -1,0 +1,251 @@
+/* Estilos únicamente para móvil - Optimizado para iPhone y Android */
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  overflow: hidden;
+  touch-action: manipulation;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+/* Mensaje de rotación */
+.rotate-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 31, 63, 0.95);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.message-container {
+  text-align: center;
+  padding: 20px;
+  max-width: 85vw;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rotate-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: rotateAnimation 2s infinite ease-in-out;
+}
+
+@keyframes rotateAnimation {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.message-container p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Grid principal optimizado para móvil horizontal */
+.party-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 6px;
+  padding: 8px;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.party-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.15s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 4px;
+}
+
+.party-logo:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.party-logo:active {
+  transform: scale(0.98);
+}
+
+.party-logo.empty {
+  background-color: #f9f9f9;
+  border: 1px dashed #aaa;
+}
+
+.party-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 3px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Estilos específicos para orientación vertical */
+@media (orientation: portrait) {
+  .party-grid {
+    gap: 4px;
+    padding: 6px;
+  }
+  
+  .party-logo img {
+    padding: 2px;
+  }
+  
+  .message-container {
+    padding: 16px;
+    max-width: 90vw;
+  }
+  
+  .rotate-icon {
+    font-size: 3.5rem;
+  }
+  
+  .message-container p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 375px) {
+  .party-grid {
+    gap: 3px;
+    padding: 5px;
+  }
+  
+  .party-logo img {
+    padding: 1px;
+  }
+  
+  .message-container {
+    padding: 12px;
+    max-width: 92vw;
+  }
+  
+  .rotate-icon {
+    font-size: 3rem;
+  }
+  
+  .message-container p {
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 376px) and (max-width: 768px) {
+  .party-grid {
+    gap: 5px;
+    padding: 7px;
+  }
+  
+  .party-logo img {
+    padding: 2px;
+  }
+}
+
+/* Estilos para pantallas grandes (tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .party-grid {
+    gap: 8px;
+    padding: 10px;
+  }
+  
+  .party-logo img {
+    padding: 4px;
+  }
+}
+
+/* Asegurar que el contenido se vea bien en cualquier orientación */
+@media (max-height: 500px) {
+  .party-grid {
+    gap: 3px;
+    padding: 5px;
+  }
+  
+  .party-logo img {
+    padding: 1px;
+  }
+}
+
+/* Estilos específicos para iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Prevenir zoom en iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  .party-logo {
+    /* Mejorar rendimiento en iOS */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Estilos específicos para Android */
+@supports not (-webkit-touch-callout: none) {
+  .party-logo {
+    /* Mejorar rendimiento en Android */
+    will-change: transform;
+  }
+}
+
+/* Prevenir zoom en dispositivos táctiles */
+@media (max-width: 768px) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .party-logo {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Asegurar que el viewport se mantenga consistente */
+@media screen and (max-width: 768px) {
+  .party-grid {
+    /* Forzar tamaño consistente */
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+}
